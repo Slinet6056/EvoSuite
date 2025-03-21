@@ -1,6 +1,30 @@
 [![Build Status](https://travis-ci.org/EvoSuite/evosuite.svg?branch=master)](https://travis-ci.org/EvoSuite/evosuite)
 [![CircleCI](https://circleci.com/gh/EvoSuite/evosuite.svg?style=svg&circle-token=f00c8d84b9dcf7dae4a82438441823f3be9df090)](https://circleci.com/gh/EvoSuite/evosuite)
 
+# EvoSuite with MOGUL Algorithm
+
+This fork of EvoSuite extends the original tool with the MOGUL algorithm for test generation.
+
+## Using MOGUL
+
+1. Create a `src/main/resources/llm.properties` file with your API configuration:
+   ```properties
+   openai.api.key=your_api_key_here
+   openai.api.url=your_api_url_here
+   openai.model=gpt-4o
+   openai.max_tokens=6000
+   openai.temperature=0.5
+   ```
+
+2. Build and install the project using Maven.
+
+3. To use the MOGUL algorithm, simply specify it with the `-Dalgorithm=MOGUL` parameter when running EvoSuite:
+   ```
+   mvn -Dalgorithm=MOGUL evosuite:generate evosuite:export
+   ```
+
+---
+
 # What is EvoSuite?
 
 EvoSuite automatically generates JUnit test suites for Java classes, targeting code coverage criteria such as branch coverage. It uses an evolutionary approach based on a genetic algorithm to derive test suites. To improve readability, the generated unit tests are minimized, and regression assertions that capture the current behavior of the tested classes are added to the tests.
